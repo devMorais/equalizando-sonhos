@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap-timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/select2.min.css') }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -35,8 +36,8 @@
             </div>
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad
-                        Nauval Azhar</a>
+                    Copyright &copy; 2025 <div class="bullet"></div> Desenvolvido por <a
+                        href="https://devmorais.com.br/">Fernando Morais</a>
                 </div>
                 <div class="footer-right">
                     2.3.0
@@ -76,6 +77,17 @@
     <script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/forms-advanced-forms.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- Mostras validações de erros dinâmica -->
+    <script>
+        @if (!empty($errors->all()))
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+    </script>
+    @stack('scripts')
 </body>
 
 </html>

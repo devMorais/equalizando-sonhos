@@ -1,7 +1,9 @@
 @extends('frontend.layouts.layout')
 @section('content')
     <!-- Hero Section -->
-    @include('frontend.sections.hero')
+    @if (!$hero->is_disabled)
+        @include('frontend.sections.hero')
+    @endif
     <!-- /Hero Section -->
 
     <!-- Clients Section -->
