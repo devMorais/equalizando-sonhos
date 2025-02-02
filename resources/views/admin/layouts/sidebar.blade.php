@@ -51,12 +51,19 @@
                 </ul>
             </li>
             <li class="menu-header">Seções</li>
-
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-home"></i>
                     <span>Hero</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{ route('admin.hero.index') }}">Seção Principal</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-handshake"></i>
+                    <span>Parceiros</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.client.index') }}">Lista de Parceiros</a></li>
+                    {{-- <li><a class="nav-link" href="{{ route('admin.client.create') }}">Adicionar Parceiro</a></li> --}}
                 </ul>
             </li>
             {{-- 
