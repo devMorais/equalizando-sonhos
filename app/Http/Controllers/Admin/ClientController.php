@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\ClientsDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 
 class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ClientsDataTable $dataTable)
     {
-        return view('admin.sections.clients.index');
+        return $dataTable->render('admin.sections.clients.index');
     }
 
     /**
@@ -31,9 +31,9 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'logo' => ['nullable', 'image', 'max:8000'],
             'name' => ['required', 'string', 'max:255'],
             'website_url' => ['nullable', 'url'],
+            'logo' => ['nullable', 'image', 'max:8000'],
         ]);
 
         $logoPath = null;
@@ -44,13 +44,13 @@ class ClientController extends Controller
             $logoPath = "/uploads/" . $logoName;
         }
 
-        $client = new Client();
-        $client->is_disabled = $request->has('is_disabled');
-        $client->logo = $logoPath;
-        $client->name = $request->name;
-        $client->website_url = $request->website_url;
+        $create = new Client();
+        $create->is_disabled = $request->has('is_disabled');
+        $create->logo = $logoPath;
+        $create->name = $request->name;
+        $create->website_url = $request->website_url;
 
-        $client->save();
+        $create->save();
 
         flash()->success('Cliente parceiro cadastrado com sucesso.');
         return redirect()->route('admin.client.index');

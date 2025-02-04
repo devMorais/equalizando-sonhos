@@ -15,15 +15,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h4>Parceiros Clientes Cadastrados</h4>
-                            <div class="card-header-action">
+                        <div class="container">
+                            <div class="card">
+                                <div class="card-header">Parceiros Clientes Cadastrados</div>
+                                <div class="card-body">
+                                    {{ $dataTable->table() }}
+                                </div>
+                            </div>
+                            {{-- <div class="card-header-action">
                                 <a href="{{ route('admin.client.create') }}" class="btn btn-primary"> Cadastrar <i
                                         class="fas fa-plus"></i></a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-body">
-
+                            {{ $dataTable->table() }}
                         </div>
                     </div>
                 </div>
@@ -33,12 +38,5 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#image-preview').css({
-                'background-size': 'cover',
-                'background-position': 'center center'
-            });
-        });
-    </script>
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush
