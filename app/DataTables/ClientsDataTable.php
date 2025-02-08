@@ -6,10 +6,7 @@ use App\Models\Client;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class ClientsDataTable extends DataTable
@@ -23,9 +20,18 @@ class ClientsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                return '<a href="' . route('admin.client.edit', $query->id) . '" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                        <a href="' . route('admin.hero.destroy', $query->id) . '" class="btn btn-sm btn-danger"><i class="fas - fa-trash"></i></a>';
+                return '<div class="btn-group" role="group" aria-label="Ações">
+                    <a href="' . route('admin.client.edit', $query->id) . '" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="' . route('admin.client.destroy', $query->id) . '" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                </div>';
             })
+            ->addColumn('logo', function ($query) {
+                return '<img src="' . asset($query->logo) . '" alt="' . $query->name . '" class="img-fluid" style="width: 50px; height: 50px; object-fit: cover;">';
+            })
+            ->addColumn('is_disabled', function ($query) {
+                return $query->is_disabled ? '<span class="badge badge-danger">Sim</span>' : '<span class="badge badge-success">Não</span>';
+            })
+            ->rawColumns(['action', 'logo', 'is_disabled'])
             ->setRowId('id');
     }
 
@@ -46,10 +52,33 @@ class ClientsDataTable extends DataTable
             ->setTableId('clients-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            //->dom('Bfrtip')
-            ->orderBy(1)
-            ->selectStyleSingle()
-            ->buttons([]);
+            ->orderBy(0)
+            ->pageLength(10) // Define o número de registros por página
+            ->lengthChange(false) // Desabilita o seletor de "entries per page"
+            ->language([
+                'sProcessing' => 'Processando...',
+                'sZeroRecords' => 'Nenhum registro encontrado',
+                'sInfo' => 'Mostrando de _START_ até _END_ de _TOTAL_ entradas',
+                'sInfoEmpty' => 'Mostrando 0 até 0 de 0 entradas',
+                'sInfoFiltered' => '(filtrado de _MAX_ entradas totais)',
+                'sSearch' => 'Pesquisar:',
+                'sEmptyTable' => 'Nenhum dado disponível na tabela',
+                'sLoadingRecords' => 'Carregando...',
+                'sFirst' => 'Primeiro',
+                'sLast' => 'Último',
+                'sNext' => 'Próximo',
+                'sPrevious' => 'Anterior',
+                'oPaginate' => [
+                    'sFirst' => 'Primeiro',
+                    'sLast' => 'Último',
+                    'sNext' => 'Próximo',
+                    'sPrevious' => 'Anterior',
+                ],
+                'oAria' => [
+                    'sSortAscending' => ': Ative para ordenar a coluna de forma ascendente',
+                    'sSortDescending' => ': Ative para ordenar a coluna de forma descendente',
+                ],
+            ]);
     }
 
     /**
@@ -58,16 +87,16 @@ class ClientsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->width(60),
-            Column::make('logo'),
-            Column::make('name'),
-            Column::make('website_url'),
-            Column::make('is_disabled'),
+            Column::make('id')->width(40)->title('ID'),
+            Column::make('logo')->width(100)->addClass('text-center'),
+            Column::make('name')->width(100)->addClass('text-center'),
+            Column::make('website_url')->width(100)->addClass('text-center'),
+            Column::make('is_disabled')->width(250)->addClass('text-center')->title('Inativo'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(100)
-                ->addClass('text-center'),
+                ->addClass('text-center')->title('Ações'),
         ];
     }
 

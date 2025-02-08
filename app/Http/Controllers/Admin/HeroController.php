@@ -58,23 +58,17 @@ class HeroController extends Controller
         $request->validate([
             'title' => ['required', 'max:200'],
             'description' => ['required', 'max:500'],
-            'background_image' => ['max:8000', 'image']
+            'background_image' => ['nullable', 'max:8000', 'image']
         ]);
 
         $hero = Hero::findOrFail($id);
-        if ($request->hasFile('background_image')) {
-            if ($hero->background_image && File::exists(public_path($hero->background_image))) {
-                File::delete(public_path($hero->background_image));
-            }
-            $image = $request->file('background_image');
-            $imageName = rand() . $image->getClientOriginalName();
-            $image->move(public_path('/uploads'), $imageName);
-            $imagePath = "/uploads/" . $imageName;
-        }
+
+        // Corrigido o nome do campo para 'background_image'
+        $imagePath = handleUpload('background_image', $hero);
 
         $hero->update([
             'is_disabled' => $request->has('is_disabled'),
-            'background_image' => $request->hasFile('background_image') ? $imagePath : $hero->background_image,
+            'background_image' => !is_null($imagePath) ? $imagePath : $hero->background_image,
             'title' => $request->title,
             'description' => $request->description,
             'button_text' => $request->button_text,

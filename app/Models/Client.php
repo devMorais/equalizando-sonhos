@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    //
+    protected $fillable = [
+        'is_disabled',
+        'logo',
+        'name',
+        'website_url',
+    ];
 }

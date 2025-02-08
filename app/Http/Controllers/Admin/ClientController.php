@@ -30,27 +30,20 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'website_url' => ['nullable', 'url'],
             'logo' => ['nullable', 'image', 'max:8000'],
         ]);
 
-        $logoPath = null;
-        if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-            $logoName = rand() . $logo->getClientOriginalName();
-            $logo->move(public_path('/uploads'), $logoName);
-            $logoPath = "/uploads/" . $logoName;
-        }
+        $logoPath = handleUpload('logo');
 
-        $create = new Client();
-        $create->is_disabled = $request->has('is_disabled');
-        $create->logo = $logoPath;
-        $create->name = $request->name;
-        $create->website_url = $request->website_url;
-
-        $create->save();
+        Client::create([
+            'is_disabled' => $request->has('is_disabled'),
+            'logo' => $logoPath,
+            'name' => $validatedData['name'],
+            'website_url' => $validatedData['website_url'],
+        ]);
 
         flash()->success('Cliente parceiro cadastrado com sucesso.');
         return redirect()->route('admin.client.index');
@@ -61,7 +54,7 @@ class ClientController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Implementação futura
     }
 
     /**
@@ -69,7 +62,8 @@ class ClientController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('admin.sections.clients.edit', compact('client'));
     }
 
     /**
@@ -77,7 +71,24 @@ class ClientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'max:250'],
+            'logo' => ['nullable', 'image', 'max:8000'],
+            'website_url' => ['required', 'url'],
+        ]);
+
+        $client = Client::findOrFail($id);
+        $imagePath = handleUpload('logo', $client);
+
+        $client->update([
+            'is_disabled' => $request->has('is_disabled'),
+            'logo' => $imagePath ?? $client->logo,
+            'name' => $validatedData['name'],
+            'website_url' => $validatedData['website_url'],
+        ]);
+
+        flash()->success('Cliente parceiro atualizado com sucesso.');
+        return redirect()->route('admin.client.index');
     }
 
     /**
@@ -85,6 +96,11 @@ class ClientController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        deleteFileIfExist($client->logo);
+        $client->delete();
+
+        flash()->success('Cliente parceiro excluído com sucesso.');
+        return redirect()->route('admin.client.index');
     }
 }
