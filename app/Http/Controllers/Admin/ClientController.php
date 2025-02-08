@@ -94,13 +94,11 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $client = Client::findOrFail($id);
-        deleteFileIfExist($client->logo);
         $client->delete();
 
-        flash()->success('Cliente parceiro excluído com sucesso.');
-        return redirect()->route('admin.client.index');
+        return response()->json(['status' => 'success', 'message' => 'Cliente excluído com sucesso.']);
     }
 }

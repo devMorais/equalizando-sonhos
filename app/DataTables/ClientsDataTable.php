@@ -22,7 +22,7 @@ class ClientsDataTable extends DataTable
             ->addColumn('action', function ($query) {
                 return '<div class="btn-group" role="group" aria-label="Ações">
                     <a href="' . route('admin.client.edit', $query->id) . '" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                    <a href="' . route('admin.client.destroy', $query->id) . '" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                    <a href="' . route('admin.client.destroy', $query->id) . '" class="delete-item btn btn-sm btn-danger "><i class="fas fa-trash"></i></a>
                 </div>';
             })
             ->addColumn('logo', function ($query) {
@@ -53,8 +53,15 @@ class ClientsDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(0)
-            ->pageLength(10) // Define o número de registros por página
-            ->lengthChange(false) // Desabilita o seletor de "entries per page"
+            ->pageLength(20)
+            ->lengthChange(false)
+            ->buttons([
+                'reload' => [
+                    'extend' => 'reload',
+                    'text' => '<i class="fas fa-sync-alt"></i> Recarregar',
+                    'className' => 'btn btn-secondary',
+                ],
+            ])
             ->language([
                 'sProcessing' => 'Processando...',
                 'sZeroRecords' => 'Nenhum registro encontrado',

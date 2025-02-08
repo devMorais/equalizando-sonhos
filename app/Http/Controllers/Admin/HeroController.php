@@ -62,8 +62,6 @@ class HeroController extends Controller
         ]);
 
         $hero = Hero::findOrFail($id);
-
-        // Corrigido o nome do campo para 'background_image'
         $imagePath = handleUpload('background_image', $hero);
 
         $hero->update([

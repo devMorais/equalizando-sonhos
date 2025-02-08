@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Dashboard</title>
 
     <!-- General CSS Files -->
@@ -79,6 +80,7 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('assets/js/page/forms-advanced-forms.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Mostras validações de erros dinâmica -->
     <script>
@@ -87,6 +89,61 @@
                 toastr.error("{{ $error }}");
             @endforeach
         @endif
+    </script>
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('body').on('click', '.delete-item', function(e) {
+                e.preventDefault();
+                let deleteUrl = $(this).attr('href');
+                Swal.fire({
+                    title: 'Tem certeza?',
+                    text: "Esta ação não pode ser revertida!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim, excluir!',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    Swal.fire(
+                                        'Excluído!',
+                                        response.message,
+                                        'success'
+                                    ).then(() => {
+                                        window.location.reload();
+                                    });
+                                } else {
+                                    Swal.fire(
+                                        'Erro!',
+                                        'Ocorreu um erro ao excluir o cliente.',
+                                        'error'
+                                    );
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(error);
+                                Swal.fire(
+                                    'Erro!',
+                                    'Ocorreu um erro ao excluir o cliente.',
+                                    'error'
+                                );
+                            }
+                        });
+                    }
+                });
+            });
+        });
     </script>
     @stack('scripts')
 </body>
