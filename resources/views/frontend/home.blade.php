@@ -7,8 +7,10 @@
     <!-- /Hero Section -->
 
     <!-- Clients Section -->
-    @include('frontend.sections.clientes')
-    <!-- /Clients Section -->
+    @if ($clients->isNotEmpty())
+        @include('frontend.sections.clientes')
+    @endif
+    <!-- Clients Section -->
 
     <!-- About Section -->
     @include('frontend.sections.about')
