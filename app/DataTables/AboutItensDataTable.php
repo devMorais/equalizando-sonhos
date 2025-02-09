@@ -26,7 +26,7 @@ class AboutItensDataTable extends DataTable
                 </div>';
             })
             ->addColumn('icon', function ($query) {
-                return '<i class="fas ' . $query->icon . '" style: widht:150px></i>';
+                return '<i class="' . $query->icon . '" style: widht:150px></i>';
             })
             ->addColumn('is_disabled', function ($query) {
                 return $query->is_disabled ? '<span class="badge badge-danger">Sim</span>' : '<span class="badge badge-success">Não</span>';

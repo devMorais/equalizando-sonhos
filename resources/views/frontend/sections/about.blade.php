@@ -16,11 +16,10 @@
                 <div class="row gy-4">
                     @foreach ($aboutItens as $item)
                         <div class="col-md-6 icon-box position-relative">
-                            {{-- <i class="{{ $item->icon }}"></i> --}}
-                            <i class="bi bi-briefcase"></i>
+                            <i class="{{ $item->icon }}"></i>
                             <h4><a href="{{ $item->url }}" class="stretched-link">{{ $item->title }}</a></h4>
                             <p>{{ $item->description }}</p>
-                        </div><!-- Icon-Box -->
+                        </div>
                     @endforeach
                 </div>
             </div>
