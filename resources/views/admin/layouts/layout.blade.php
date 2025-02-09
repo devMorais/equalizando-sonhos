@@ -28,7 +28,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('assets/css/datatable.css') }}">
+
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
 <body>
@@ -72,6 +74,7 @@
     <script src="{{ asset('assets/js/plugins/bootstrap-timepicker.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/daterangepicker.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable.js') }}"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
@@ -118,6 +121,9 @@
                         $.ajax({
                             type: 'DELETE',
                             url: deleteUrl,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
                             success: function(response) {
                                 if (response.status === 'success') {
                                     Swal.fire(
