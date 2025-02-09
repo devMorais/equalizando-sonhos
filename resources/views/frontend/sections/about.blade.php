@@ -2,17 +2,18 @@
     <div class="container position-relative">
         <div class="row gy-5">
             <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
-                <h3>Voluptatem dignissimos provident quasi</h3>
+                <h3>{{ $aboutConfig->title }}</h3>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                    {{ $aboutConfig->description }}
                 </p>
-                <a href="#" class="about-btn align-self-center align-self-xl-start"><span>About
-                        us</span> <i class="bi bi-chevron-right"></i></a>
+                @if ($aboutConfig->button_text)
+                    <a href="{{ $aboutConfig->button_url }}"
+                        class="about-btn align-self-center align-self-xl-start"><span>{{ $aboutConfig->button_text }}</span>
+                        <i class="bi bi-chevron-right"></i></a>
+                @endif
             </div>
             <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
                 <div class="row gy-4">
-
                     <div class="col-md-6 icon-box position-relative">
                         <i class="bi bi-briefcase"></i>
                         <h4><a href="" class="stretched-link">Corporis voluptates sit</a></h4>

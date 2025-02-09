@@ -47,7 +47,6 @@
                     <span>Dropdown</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="">test</a></li>
-
                 </ul>
             </li>
             <li class="menu-header">Seções</li>
@@ -63,13 +62,16 @@
                     <span>Parceiros</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{ route('admin.client.index') }}">Lista de Parceiros</a></li>
-                    {{-- <li><a class="nav-link" href="{{ route('admin.client.create') }}">Adicionar Parceiro</a></li> --}}
                 </ul>
             </li>
-            {{-- 
-            <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank
-                        Page</span></a></li> --}}
-
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-info-circle"></i>
+                    <span>Sobre</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.about-config.index') }}">Configuração</a></li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>

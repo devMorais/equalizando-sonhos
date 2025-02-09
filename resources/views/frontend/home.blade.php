@@ -13,7 +13,9 @@
     <!-- Clients Section -->
 
     <!-- About Section -->
-    @include('frontend.sections.about')
+    @if (!$aboutConfig->is_disabled)
+        @include('frontend.sections.about')
+    @endif
     <!-- /About Section -->
 
     <!-- Stats Section -->
