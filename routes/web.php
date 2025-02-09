@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutConfigController;
+use App\Http\Controllers\Admin\AboutItensController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
@@ -43,4 +44,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('hero', HeroController::class);
     Route::resource('client', ClientController::class);
     Route::resource('about-config', AboutConfigController::class);
+    Route::resource('about-itens', AboutItensController::class);
 });

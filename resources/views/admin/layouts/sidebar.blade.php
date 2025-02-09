@@ -70,6 +70,7 @@
                     <span>Sobre</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{ route('admin.about-config.index') }}">Configuração</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.about-itens.index') }}">Itens da Seção Sobre</a></li>
                 </ul>
             </li>
         </ul>

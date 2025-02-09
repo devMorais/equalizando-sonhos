@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutConfig;
+use App\Models\AboutItens;
 use App\Models\Client;
 use App\Models\Hero;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -15,10 +15,12 @@ class HomeController extends Controller
         $hero = Hero::first();
         $clients = Client::where('is_disabled', false)->orderBy('id')->get();
         $aboutConfig = AboutConfig::first();
+        $aboutItens = AboutItens::where('is_disabled', false)->orderBy('id')->get();
         return view('frontend.home', compact(
             'hero',
             'clients',
-            'aboutConfig'
+            'aboutConfig',
+            'aboutItens'
         ));
     }
 }
