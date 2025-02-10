@@ -19,7 +19,9 @@
     <!-- /About Section -->
 
     <!-- Stats Section -->
-    @include('frontend.sections.stats')
+    @if ($stats->isNotEmpty())
+        @include('frontend.sections.stats')
+    @endif
     <!-- /Stats Section -->
 
     <!-- Tabs Section -->
