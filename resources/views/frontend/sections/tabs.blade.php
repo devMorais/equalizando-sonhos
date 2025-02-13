@@ -1,32 +1,16 @@
 <section id="tabs" class="tabs section">
     <div class="container">
-        <ul class="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay="100">
-            <li class="nav-item col-3">
-                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tabs-tab-1">
-                    <i class="bi bi-binoculars"></i>
-                    <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
-                </a>
-            </li>
-            <li class="nav-item col-3">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-2">
-                    <i class="bi bi-box-seam"></i>
-                    <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
-                </a>
-            </li>
-            <li class="nav-item col-3">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-3">
-                    <i class="bi bi-brightness-high"></i>
-                    <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
-                </a>
-            </li>
-            <li class="nav-item col-3">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-4">
-                    <i class="bi bi-command"></i>
-                    <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
-                </a>
-            </li>
-        </ul><!-- End Tab Nav -->
-
+        <ul class="nav nav-tabs row d-flex" data-aos="fade-up" data-aos-delay="100">
+            @foreach ($tabCategories as $category)
+                <li class="nav-item col-3">
+                    <a class="nav-link {{ $loop->first ? 'active show' : '' }}" data-bs-toggle="tab"
+                        data-bs-target="#tabs-{{ $category->slug }}">
+                        <i class="{{ $category->icon }}"></i>
+                        <h4 class="d-none d-lg-block">{{ $category->title }}</h4>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
         <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
             <div class="tab-pane fade active show" id="tabs-tab-1">
                 <div class="row">
@@ -56,10 +40,10 @@
                         </p>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/working-1.jpg" alt="" class="img-fluid">
+                        <img src="{{ asset('assets/img/working-1.jpg') }}" alt="" class="img-fluid">
                     </div>
                 </div>
-            </div><!-- End Tab Content Item -->
+            </div>
             <div class="tab-pane fade" id="tabs-tab-2">
                 <div class="row">
                     <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
@@ -90,7 +74,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/working-2.jpg" alt="" class="img-fluid">
+                        <img src="{{ asset('assets/img/working-2.jpg') }}" alt="" class="img-fluid">
                     </div>
                 </div>
             </div><!-- End Tab Content Item -->
@@ -121,7 +105,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/working-3.jpg" alt="" class="img-fluid">
+                        <img src="{{ asset('assets/img/working-3.jpg') }}" alt="" class="img-fluid">
                     </div>
                 </div>
             </div><!-- End Tab Content Item -->
@@ -153,10 +137,10 @@
                         </ul>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 text-center">
-                        <img src="assets/img/working-4.jpg" alt="" class="img-fluid">
+                        <img src="{{ asset('assets/img/working-4.jpg') }}" alt="" class="img-fluid">
                     </div>
                 </div>
-            </div><!-- End Tab Content Item -->
+            </div>
         </div>
     </div>
 </section>

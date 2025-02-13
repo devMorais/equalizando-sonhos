@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StatController;
+use App\Http\Controllers\Admin\TabCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,9 +43,17 @@ require __DIR__ . '/auth.php';
 
 /* Admin Panel Routes */
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+
+    /* Hero */
     Route::resource('hero', HeroController::class);
+    /* Client */
     Route::resource('client', ClientController::class);
+    /* About Config */
     Route::resource('about-config', AboutConfigController::class);
+    /* About Itens */
     Route::resource('about-itens', AboutItensController::class);
+    /* Stat */
     Route::resource('stat', StatController::class);
+    /* Tab Category */
+    Route::resource('tab-category', TabCategoryController::class);
 });

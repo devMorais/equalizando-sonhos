@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('about_configs', function (Blueprint $table) {
+        Schema::create('tab_categories', function (Blueprint $table) {
             $table->id();
             $table->boolean('is_disabled')->default(false)->nullable();
-            $table->text('title')->nullable();
-            $table->text('description')->nullable();
-            $table->string('button_text')->nullable();
-            $table->string('button_url')->nullable();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('icon');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('about_configs');
+        Schema::dropIfExists('tab_categories');
     }
 };

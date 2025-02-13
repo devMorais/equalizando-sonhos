@@ -8,6 +8,7 @@ use App\Models\AboutItens;
 use App\Models\Client;
 use App\Models\Hero;
 use App\Models\Stat;
+use App\Models\TabCategory;
 
 class HomeController extends Controller
 {
@@ -18,12 +19,14 @@ class HomeController extends Controller
         $aboutConfig = AboutConfig::first();
         $aboutItens = AboutItens::where('is_disabled', false)->orderBy('id')->get();
         $stats = Stat::where('is_disabled', false)->orderBy('id')->get();
+        $tabCategories = TabCategory::where('is_disabled', false)->orderBy('id')->get();
         return view('frontend.home', compact(
             'hero',
             'clients',
             'aboutConfig',
             'aboutItens',
-            'stats'
+            'stats',
+            'tabCategories'
         ));
     }
 }

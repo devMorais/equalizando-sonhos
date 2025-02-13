@@ -80,6 +80,13 @@
                     <li><a class="nav-link" href="{{ route('admin.stat.index') }}">Lista de Estatísticas</a></li>
                 </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-list-alt"></i>
+                    <span>Guias</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.tab-category.index') }}">Categorias</a></li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>
