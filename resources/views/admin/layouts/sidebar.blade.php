@@ -85,6 +85,7 @@
                     <span>Guias</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{ route('admin.tab-category.index') }}">Categorias</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.tab-item.index') }}">Itens</a></li>
                 </ul>
             </li>
         </ul>

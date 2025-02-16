@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\StatController;
 use App\Http\Controllers\Admin\TabCategoryController;
+use App\Http\Controllers\Admin\TabItemController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,4 +57,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('stat', StatController::class);
     /* Tab Category */
     Route::resource('tab-category', TabCategoryController::class);
+    /* Tab Item */
+    Route::resource('tab-item', TabItemController::class);
 });

@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\Hero;
 use App\Models\Stat;
 use App\Models\TabCategory;
+use App\Models\TabItem;
 
 class HomeController extends Controller
 {
@@ -20,13 +21,21 @@ class HomeController extends Controller
         $aboutItens = AboutItens::where('is_disabled', false)->orderBy('id')->get();
         $stats = Stat::where('is_disabled', false)->orderBy('id')->get();
         $tabCategories = TabCategory::where('is_disabled', false)->orderBy('id')->get();
+        $tabItens = TabItem::where('is_disabled', false)
+            ->orderBy('id', 'desc')
+            ->get()
+            ->groupBy('category_id')
+            ->map(function ($group) {
+                return $group->first();
+            });
         return view('frontend.home', compact(
             'hero',
             'clients',
             'aboutConfig',
             'aboutItens',
             'stats',
-            'tabCategories'
+            'tabCategories',
+            'tabItens'
         ));
     }
 }
