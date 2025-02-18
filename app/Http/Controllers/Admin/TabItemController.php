@@ -94,6 +94,7 @@ class TabItemController extends Controller
             'description' => $validatedData['description'],
             'category_id' => $validatedData['category_id'],
         ]);
+
         flash()->success('Item Atualizado com sucesso.');
         return redirect()->route('admin.tab-item.index');
     }

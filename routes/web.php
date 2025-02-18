@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\StatController;
 use App\Http\Controllers\Admin\TabCategoryController;
 use App\Http\Controllers\Admin\TabItemController;
@@ -59,4 +60,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('tab-category', TabCategoryController::class);
     /* Tab Item */
     Route::resource('tab-item', TabItemController::class);
+    /* Service */
+    Route::resource('service-config', ServiceController::class);
 });

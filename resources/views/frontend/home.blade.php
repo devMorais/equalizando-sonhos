@@ -25,11 +25,15 @@
     <!-- /Stats Section -->
 
     <!-- Tabs Section -->
-    @include('frontend.sections.tabs')
+    @if ($tabItens->isNotEmpty())
+        @include('frontend.sections.tabs')
+    @endif
     <!-- /Tabs Section -->
 
     <!-- Services Section -->
-    @include('frontend.sections.services')
+    @if ($serviceConfig)
+        @include('frontend.sections.services')
+    @endif
     <!-- /Services Section -->
 
     <!-- Portfolio Section -->

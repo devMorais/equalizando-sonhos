@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AboutConfig extends Model
+class Service extends Model
 {
     use HasFactory;
     protected $fillable = [
         'is_disabled',
         'title',
-        'description',
-        'button_text',
-        'button_url',
+        'description'
     ];
 }

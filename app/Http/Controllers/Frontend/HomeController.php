@@ -7,6 +7,7 @@ use App\Models\AboutConfig;
 use App\Models\AboutItens;
 use App\Models\Client;
 use App\Models\Hero;
+use App\Models\Service;
 use App\Models\Stat;
 use App\Models\TabCategory;
 use App\Models\TabItem;
@@ -28,6 +29,7 @@ class HomeController extends Controller
             ->map(function ($group) {
                 return $group->first();
             });
+        $serviceConfig = Service::first();
         return view('frontend.home', compact(
             'hero',
             'clients',
@@ -35,7 +37,8 @@ class HomeController extends Controller
             'aboutItens',
             'stats',
             'tabCategories',
-            'tabItens'
+            'tabItens',
+            'serviceConfig'
         ));
     }
 }

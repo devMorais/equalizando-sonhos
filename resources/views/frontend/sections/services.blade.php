@@ -1,9 +1,9 @@
 <section id="services" class="services section section-bg dark-background">
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-    </div><!-- End Section Title -->
+        <h2>{{ $serviceConfig->title }}</h2>
+        <p>{{ $serviceConfig->description }}</p>
+    </div>
     <div class="container">
         <div class="row gy-4">
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
