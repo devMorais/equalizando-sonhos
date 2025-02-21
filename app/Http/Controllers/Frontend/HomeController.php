@@ -7,7 +7,9 @@ use App\Models\AboutConfig;
 use App\Models\AboutItens;
 use App\Models\Client;
 use App\Models\Hero;
+use App\Models\PortfolioCategory;
 use App\Models\Service;
+use App\Models\ServiceItem;
 use App\Models\Stat;
 use App\Models\TabCategory;
 use App\Models\TabItem;
@@ -30,6 +32,8 @@ class HomeController extends Controller
                 return $group->first();
             });
         $serviceConfig = Service::first();
+        $serviceItens = ServiceItem::where('is_disabled', false)->orderBy('id')->get();
+        $portfolioCategories = PortfolioCategory::orderBy('id')->get();
         return view('frontend.home', compact(
             'hero',
             'clients',
@@ -38,7 +42,9 @@ class HomeController extends Controller
             'stats',
             'tabCategories',
             'tabItens',
-            'serviceConfig'
+            'serviceConfig',
+            'serviceItens',
+            'portfolioCategories'
         ));
     }
 }

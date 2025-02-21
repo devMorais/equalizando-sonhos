@@ -53,7 +53,7 @@
     <!-- /Faq Section -->
 
     <!-- Team Section -->
-    @include('frontend.sections.team')
+    {{-- @include('frontend.sections.team') --}}
     <!-- /Team Section -->
 
     <!-- Contact Section -->

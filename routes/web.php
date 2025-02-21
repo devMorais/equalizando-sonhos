@@ -5,8 +5,11 @@ use App\Http\Controllers\Admin\AboutItensController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\PortfolioCategoryController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ServiceItem;
+use App\Http\Controllers\Admin\ServiceItemController;
 use App\Http\Controllers\Admin\StatController;
 use App\Http\Controllers\Admin\TabCategoryController;
 use App\Http\Controllers\Admin\TabItemController;
@@ -62,4 +65,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('tab-item', TabItemController::class);
     /* Service */
     Route::resource('service-config', ServiceController::class);
+    /* Service Item */
+    Route::resource('service-itens', ServiceItemController::class);
+    /* Portfolio */
+    Route::resource('portfolio-category', PortfolioCategoryController::class);
 });

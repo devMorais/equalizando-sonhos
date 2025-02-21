@@ -7,11 +7,10 @@
     <div class="container">
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
             <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-                <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-app">App</li>
-                <li data-filter=".filter-product">Product</li>
-                <li data-filter=".filter-branding">Branding</li>
-                <li data-filter=".filter-books">Books</li>
+                <li data-filter="*" class="filter-active">Todas</li>
+                @foreach ($portfolioCategories as $category)
+                    <li data-filter=".filter-{{ $category->slug }}">{{ $category->title }}</li>
+                @endforeach
             </ul><!-- End Portfolio Filters -->
             <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
