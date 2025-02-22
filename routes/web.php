@@ -6,14 +6,16 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
+use App\Http\Controllers\Admin\PortfolioConfigController;
+use App\Http\Controllers\admin\PortfolioItemController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\ServiceItem;
 use App\Http\Controllers\Admin\ServiceItemController;
 use App\Http\Controllers\Admin\StatController;
 use App\Http\Controllers\Admin\TabCategoryController;
 use App\Http\Controllers\Admin\TabItemController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Models\PortfolioItem;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,6 +36,7 @@ Route::get('/portfolio-details', function () {
 Route::get('/service-details', function () {
     return view('frontend.service-details');
 });
+Route::get('/portfolio/{slug}', [PortfolioItem::class, 'show'])->name('portfolio.details');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -69,4 +72,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('service-itens', ServiceItemController::class);
     /* Portfolio */
     Route::resource('portfolio-category', PortfolioCategoryController::class);
+    /* Portfolio Item */
+    Route::resource('portfolio-itens', PortfolioItemController::class);
+    /* Portfolio Config */
+    Route::resource('portfolio-config', PortfolioConfigController::class);
 });

@@ -101,7 +101,10 @@
                         class="fas fa-briefcase"></i>
                     <span>Portfolio</span></a>
                 <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.portfolio-config.index') }}">Configuração</a></li>
                     <li><a class="nav-link" href="{{ route('admin.portfolio-category.index') }}">Categorias</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.portfolio-itens.index') }}">Itens</a>
                     </li>
                 </ul>
             </li>

@@ -37,7 +37,9 @@
     <!-- /Services Section -->
 
     <!-- Portfolio Section -->
-    @include('frontend.sections.portfolio')
+    @if (!$portfolioConfig->is_disabled)
+        @include('frontend.sections.portfolio')
+    @endif
     <!-- /Portfolio Section -->
 
     <!-- Testimonials Section -->
