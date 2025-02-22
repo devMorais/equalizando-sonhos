@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/02/2025 às 18:57
+-- Tempo de geração: 23/02/2025 às 00:02
 -- Versão do servidor: 8.0.41
 -- Versão do PHP: 8.2.12
 
@@ -43,7 +43,7 @@ CREATE TABLE `about_configs` (
 --
 
 INSERT INTO `about_configs` (`id`, `is_disabled`, `title`, `description`, `button_text`, `button_url`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Equalizando Sonhos: Sua Jornada para o Autoconhecimento', 'O Equalizando Sonhos é sua bússola para o desenvolvimento pessoal. Nascido da minha própria jornada de transformação, oferecemos mentorias personalizadas, consultorias empresariais e práticas de meditação. Nossa missão é despertar seu potencial interior, alinhando-o com a energia positiva do universo. Juntos, vamos equalizar sua vida, harmonizando mente, corpo e espírito para uma existência plena e realizada. Descubra o poder dentro de você e manifeste seus sonhos mais profundos.', 'Conheça Minha História', '#', '2025-02-09 02:42:50', '2025-02-09 14:16:37');
+(1, 0, 'Voluptatem dignissimos provident quasi', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit', 'Conheça Minha História', '#', '2025-02-09 02:42:50', '2025-02-13 02:10:46');
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,11 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `is_disabled`, `logo`, `name`, `website_url`, `created_at`, `updated_at`) VALUES
-(20, 0, 'uploads/776237614_logo.png', 'Equalizando Sonhos', 'https://equalizandosonhos.com.br/', '2025-02-09 01:30:59', '2025-02-09 17:52:20');
+(20, 1, 'uploads/776237614_logo.png', 'Equalizando Sonhos', 'https://equalizandosonhos.com.br/', '2025-02-09 01:30:59', '2025-02-10 02:31:26'),
+(23, 0, 'uploads/778639355_logo.png', 'Amanda', 'https://equalizandosonhos.com.br/', '2025-02-13 02:08:15', '2025-02-13 02:08:15'),
+(24, 0, 'uploads/350451428_logo.png', 'Amanda', 'https://equalizandosonhos.com.br/', '2025-02-13 02:08:27', '2025-02-13 02:08:27'),
+(25, 0, 'uploads/315099050_logo.png', 'Amanda', 'https://equalizandosonhos.com.br/', '2025-02-13 02:08:37', '2025-02-13 02:08:37'),
+(26, 0, 'uploads/1458882499_logo.png', 'Amanda', 'https://equalizandosonhos.com.br/', '2025-02-13 02:08:49', '2025-02-13 02:08:49');
 
 -- --------------------------------------------------------
 
@@ -159,7 +163,7 @@ CREATE TABLE `heroes` (
 --
 
 INSERT INTO `heroes` (`id`, `is_disabled`, `background_image`, `title`, `description`, `button_text`, `button_url`, `video_url`, `created_at`, `updated_at`) VALUES
-(1, 0, 'uploads/1431301723_hero-bg.png', 'Equilibre Sua Vida, Alcance Seus Objetivos', 'Guiando você na jornada de autoconhecimento e realização pessoal através de mentorias personalizadas e práticas transformadoras.', 'Saiba Mais', '#', 'https://www.youtube.com/watch?v=68EYCgIae2w&t=29s', '2025-02-02 04:35:05', '2025-02-09 01:32:55');
+(1, 0, 'uploads/812993633_login-bg.jpg', 'Bettter digital experience with Presento', 'We are team of talented designers making websites with Bootstrap', 'Saiba Mais', '#', 'https://www.youtube.com/watch?v=68EYCgIae2w&t=29s', '2025-02-02 04:35:05', '2025-02-13 02:07:45');
 
 -- --------------------------------------------------------
 
@@ -220,7 +224,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2025_02_02_171749_create_clients_table', 3),
 (6, '2025_02_08_150301_create_abouts_table', 4),
 (7, '2025_02_08_225007_create_about_configs_table', 5),
-(8, '2025_02_09_002902_create_about_itens_table', 6);
+(8, '2025_02_09_002902_create_about_itens_table', 6),
+(9, '2025_02_09_114450_create_stats_table', 7),
+(10, '2025_02_10_221238_create_tab_categories_table', 8),
+(11, '2025_02_16_120112_create_tab_items_table', 9),
+(12, '2025_02_17_201056_create_services_table', 10),
+(13, '2025_02_19_203606_create_service_items_table', 11),
+(14, '2025_02_20_211917_create_portfolio_categories_table', 12),
+(15, '2025_02_21_233909_create_portfolio_items_table', 13),
+(16, '2025_02_22_013936_create_portfolio_configs_table', 14);
 
 -- --------------------------------------------------------
 
@@ -233,6 +245,127 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `portfolio_categories`
+--
+
+CREATE TABLE `portfolio_categories` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `portfolio_categories`
+--
+
+INSERT INTO `portfolio_categories` (`id`, `title`, `slug`, `created_at`, `updated_at`) VALUES
+(2, 'Omnis Nam nostrud pe', 'omnis-nam-nostrud-pe-p1R9d', '2025-02-21 01:12:53', '2025-02-21 01:13:11'),
+(3, 'Laborum aspernatur q', 'laborum-aspernatur-q-EjKTj', '2025-02-21 01:12:58', '2025-02-21 01:13:05'),
+(4, 'Dolor sapiente eiusm', 'dolor-sapiente-eiusm-zYtdf', '2025-02-21 01:13:15', '2025-02-21 01:13:15'),
+(5, 'Sunt neque sit aut', 'sunt-neque-sit-aut-uK2UZ', '2025-02-21 01:13:21', '2025-02-21 01:13:21'),
+(8, 'Aute dolore dolores', 'aute-dolore-dolores-XPG9Q', '2025-02-21 01:54:30', '2025-02-21 01:54:30'),
+(9, 'Maiores veniam ut e', 'maiores-veniam-ut-e-e7la5', '2025-02-21 01:54:47', '2025-02-21 01:54:47');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `portfolio_configs`
+--
+
+CREATE TABLE `portfolio_configs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `is_disabled` tinyint(1) DEFAULT '0',
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `portfolio_configs`
+--
+
+INSERT INTO `portfolio_configs` (`id`, `is_disabled`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Ut adipisci commodi', 'Impedit corporis am', '2025-02-22 04:58:21', '2025-02-22 05:01:02');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `portfolio_items`
+--
+
+CREATE TABLE `portfolio_items` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `portfolio_items`
+--
+
+INSERT INTO `portfolio_items` (`id`, `title`, `description`, `image`, `category_id`, `created_at`, `updated_at`) VALUES
+(1, 'Dolor consequat Mol', 'Et commodo velit, po. Et commodo velit, po.Et commodo velit, po.Et commodo velit, po.Et commodo velit, po.Et commodo velit, po.Et commodo velit, po.', 'uploads/845068954_client-2.png', 8, '2025-02-22 03:41:58', '2025-02-22 03:41:58'),
+(2, 'Consectetur qui est', 'Porro natus veniam  Porro natus veniam Porro natus veniam', 'uploads/2006045012_client-8.png', 5, '2025-02-22 04:23:20', '2025-02-22 04:23:20');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `services`
+--
+
+CREATE TABLE `services` (
+  `id` bigint UNSIGNED NOT NULL,
+  `is_disabled` tinyint(1) DEFAULT '0',
+  `title` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `services`
+--
+
+INSERT INTO `services` (`id`, `is_disabled`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Este é um teste de título', 'Este é um teste de descrição', '2025-02-17 23:41:31', '2025-02-17 23:51:24');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `service_items`
+--
+
+CREATE TABLE `service_items` (
+  `id` bigint UNSIGNED NOT NULL,
+  `is_disabled` tinyint(1) DEFAULT '0',
+  `icon` text COLLATE utf8mb4_unicode_ci,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `service_items`
+--
+
+INSERT INTO `service_items` (`id`, `is_disabled`, `icon`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 0, 'fas fa-align-center', 'Consequatur et volup', 'Quia ullam nostrud d Quia ullam nostrud dQuia ullam nostrud dQuia ullam nostrud dQuia ullam nostrud dQuia ullam nostrud dQuia ullam nostrud d', '2025-02-20 02:01:58', '2025-02-20 23:30:58'),
+(2, 0, 'fas fa-address-card', 'Dolores possimus ac', 'Aut natus eaque ulla Aut natus eaque ullaAut natus eaque ullaAut natus eaque ullaAut natus eaque ullaAut natus eaque ullaAut natus eaque ulla', '2025-02-20 23:24:13', '2025-02-20 23:30:46'),
+(3, 0, 'fas fa-arrow-up', 'Ipsum molestiae con', 'Itaque molestias tem Itaque molestias temItaque molestias temItaque molestias temItaque molestias temItaque molestias temItaque molestias tem', '2025-02-20 23:24:21', '2025-02-20 23:30:33'),
+(4, 0, 'fas fa-air-freshener', 'Molestiae nisi irure', 'Exercitationem sit Exercitationem sit Exercitationem sit Exercitationem sit Exercitationem sit Exercitationem sit', '2025-02-20 23:24:27', '2025-02-20 23:30:22'),
+(5, 0, 'fab fa-accusoft', 'Porro ut explicabo', 'Voluptates eveniet Voluptates eveniet Voluptates eveniet Voluptates eveniet Voluptates eveniet Voluptates eveniet Voluptates eveniet', '2025-02-20 23:24:34', '2025-02-20 23:30:09');
 
 -- --------------------------------------------------------
 
@@ -254,7 +387,84 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('RFGVj6ubhhSq6x9nbh2oprnlAzqfP7oxIrFgezyO', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYzB5SnVEYWZ3alRwN2JscDNRc0FLdHpmVWVOeEQ3bDZ2UXdISVZ6RiI7czoxODoiZmxhc2hlcjo6ZW52ZWxvcGVzIjthOjA6e31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozNDoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL2NsaWVudCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1739123548);
+('tqgRDhqmZZo29vngtxPhwCoKMA7o7G6m1RHstn1i', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZ1JqN3RzRTkzTUhKMmJSZEdjbkZYc3dXRWFLSnF4ZVhYZ1NyVFdWciI7czoxODoiZmxhc2hlcjo6ZW52ZWxvcGVzIjthOjA6e31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1740200465);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `stats`
+--
+
+CREATE TABLE `stats` (
+  `id` bigint UNSIGNED NOT NULL,
+  `is_disabled` tinyint(1) DEFAULT '0',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `count` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `stats`
+--
+
+INSERT INTO `stats` (`id`, `is_disabled`, `title`, `icon`, `count`, `created_at`, `updated_at`) VALUES
+(3, 0, 'Trabalhadores', 'fas fa-people-carry', 4, '2025-02-10 01:47:11', '2025-02-10 23:59:26'),
+(4, 0, 'Horas de Suporte', 'fab fa-angular', 5000, '2025-02-10 01:52:57', '2025-02-10 23:58:34'),
+(5, 0, 'Projetos', 'fab fa-r-project', 521, '2025-02-10 01:53:22', '2025-02-10 23:59:34'),
+(7, 0, 'Clientes Felizes', 'fas fa-atom', 232, '2025-02-10 01:54:44', '2025-02-10 23:59:38');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tab_categories`
+--
+
+CREATE TABLE `tab_categories` (
+  `id` bigint UNSIGNED NOT NULL,
+  `is_disabled` tinyint(1) DEFAULT '0',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `tab_categories`
+--
+
+INSERT INTO `tab_categories` (`id`, `is_disabled`, `title`, `slug`, `icon`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Séries', 'series-k8HIR', 'fas fa-tv', '2025-02-12 23:36:43', '2025-02-16 14:57:09'),
+(2, 0, 'Livros', 'livros-t0Tc8', 'fas fa-book-open', '2025-02-12 23:44:26', '2025-02-16 14:57:02'),
+(4, 0, 'Sites', 'sites-NHpYI', 'fas fa-sitemap', '2025-02-16 20:02:29', '2025-02-16 20:02:29');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tab_items`
+--
+
+CREATE TABLE `tab_items` (
+  `id` bigint UNSIGNED NOT NULL,
+  `is_disabled` tinyint(1) DEFAULT '0',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `tab_items`
+--
+
+INSERT INTO `tab_items` (`id`, `is_disabled`, `title`, `image`, `description`, `category_id`, `created_at`, `updated_at`) VALUES
+(2, 0, 'Necessitatibus exerc', 'uploads/1590093078_services.jpg', 'Pariatur? Voluptas i.&nbsp;Necessitatibus exercNecessitatibus exercNecessitatibus exercNecessitatibus exercNecessitatibus exercNecessitatibus exercNecessitatibus exerc', 4, '2025-02-16 18:07:46', '2025-02-16 20:16:09'),
+(3, 0, 'Consectetur id quae', 'uploads/673369445_working-4.jpg', 'Aliqua. Nihil rerum . Aliqua. Nihil rerum .Aliqua. Nihil rerum .Aliqua. Nihil rerum .Aliqua. Nihil rerum .Aliqua. Nihil rerum .Aliqua. Nihil rerum .', 2, '2025-02-16 19:38:05', '2025-02-16 20:14:48'),
+(4, 0, 'Facilis do dicta aut', 'uploads/2044758173_working-3.jpg', 'Provident, et qui si. Facilis do dicta autFacilis do dicta autFacilis do dicta autFacilis do dicta autFacilis do dicta autFacilis do dicta autFacilis do dicta autFacilis do dicta aut', 1, '2025-02-16 20:02:52', '2025-02-16 20:16:26');
 
 -- --------------------------------------------------------
 
@@ -353,12 +563,63 @@ ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
+-- Índices de tabela `portfolio_categories`
+--
+ALTER TABLE `portfolio_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `portfolio_categories_slug_unique` (`slug`);
+
+--
+-- Índices de tabela `portfolio_configs`
+--
+ALTER TABLE `portfolio_configs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `portfolio_items`
+--
+ALTER TABLE `portfolio_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `portfolio_items_category_id_foreign` (`category_id`);
+
+--
+-- Índices de tabela `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `service_items`
+--
+ALTER TABLE `service_items`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sessions_user_id_index` (`user_id`),
   ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Índices de tabela `stats`
+--
+ALTER TABLE `stats`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `tab_categories`
+--
+ALTER TABLE `tab_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tab_categories_slug_unique` (`slug`);
+
+--
+-- Índices de tabela `tab_items`
+--
+ALTER TABLE `tab_items`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `users`
@@ -387,7 +648,7 @@ ALTER TABLE `about_itens`
 -- AUTO_INCREMENT de tabela `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de tabela `failed_jobs`
@@ -411,13 +672,71 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT de tabela `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de tabela `portfolio_categories`
+--
+ALTER TABLE `portfolio_categories`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `portfolio_configs`
+--
+ALTER TABLE `portfolio_configs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `portfolio_items`
+--
+ALTER TABLE `portfolio_items`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `service_items`
+--
+ALTER TABLE `service_items`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `stats`
+--
+ALTER TABLE `stats`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `tab_categories`
+--
+ALTER TABLE `tab_categories`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `tab_items`
+--
+ALTER TABLE `tab_items`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `portfolio_items`
+--
+ALTER TABLE `portfolio_items`
+  ADD CONSTRAINT `portfolio_items_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `portfolio_categories` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
