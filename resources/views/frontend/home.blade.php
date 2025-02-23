@@ -54,15 +54,7 @@
     @endif
     <!-- /Pricing Section -->
 
-    {{-- <!-- Faq Section -->
-    @include('frontend.sections.faq')
-    <!-- /Faq Section --> --}}
-
-    <!-- Team Section -->
-    {{-- @include('frontend.sections.team') --}}
-    <!-- /Team Section -->
-
     <!-- Contact Section -->
-    @include('frontend.sections.contact')
+    @include('frontend.sections.contact');
     <!-- /Contact Section -->
 @endsection

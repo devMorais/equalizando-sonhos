@@ -11,18 +11,7 @@
                 <li><a href="#hero" class="active">Home<br></a></li>
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#services">Serviços</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Time</a></li>
-                <li><a href="#">Blog</a></li>
-                <li class="dropdown"><a href="#"><span>Dropdown</span> <i
-                            class="bi bi-chevron-down toggle-dropdown"></i></a>
-                    <ul>
-                        <li><a href="#">Dropdown 1</a></li>
-                        <li><a href="#">Dropdown 2</a></li>
-                        <li><a href="#">Dropdown 3</a></li>
-                        <li><a href="#">Dropdown 4</a></li>
-                    </ul>
-                </li>
+                <li><a href="#portfolio">Blog</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

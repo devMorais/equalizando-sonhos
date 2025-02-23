@@ -1,8 +1,8 @@
 <section id="pricing" class="pricing section section-bg dark-background">
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-        <h2>Pricing</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>{{ $PricingConfig->title }}</h2>
+        <p>{{ $PricingConfig->description }}</p>
     </div>
     <!-- End Section Title -->
     <div class="container">
