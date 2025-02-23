@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
+use App\Models\TestimonialsConfig;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class TestimonialsConfigController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $serviceConfig = Service::first();
-        return view('admin.sections.service.config.index', compact('serviceConfig'));
+        $testimonialsConfig = TestimonialsConfig::first();
+        return view('admin.sections.testimonials.config.index', compact('testimonialsConfig'));
     }
 
     /**
@@ -59,14 +59,15 @@ class ServiceController extends Controller
             'description' => ['required', 'max:500'],
         ]);
 
-        Service::updateOrCreate(
+        TestimonialsConfig::updateOrCreate(
             ['id' => $id],
             [
                 'is_disabled' => $request->has('is_disabled'),
                 'title' => $request->title,
-                'description' => $request->description,
+                'description' => $request->description
             ]
         );
+
         flash()->success('Configuração da seção atualizada com sucesso.');
         return redirect()->back();
     }

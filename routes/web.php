@@ -8,12 +8,15 @@ use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PortfolioCategoryController;
 use App\Http\Controllers\Admin\PortfolioConfigController;
 use App\Http\Controllers\admin\PortfolioItemController;
+use App\Http\Controllers\Admin\PricingConfigController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ServiceItemController;
 use App\Http\Controllers\Admin\StatController;
 use App\Http\Controllers\Admin\TabCategoryController;
 use App\Http\Controllers\Admin\TabItemController;
+use App\Http\Controllers\Admin\TestimonialsConfigController;
+use App\Http\Controllers\Admin\TestimonialsController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Models\PortfolioItem;
 use Illuminate\Support\Facades\Route;
@@ -76,4 +79,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('portfolio-itens', PortfolioItemController::class);
     /* Portfolio Config */
     Route::resource('portfolio-config', PortfolioConfigController::class);
+    /* Testimonials Config */
+    Route::resource('testimonials-config', TestimonialsConfigController::class);
+    /* Testimonials */
+    Route::resource('testimonials', TestimonialsController::class);
+    /* Pricing Config */
+    Route::resource('pricing-config', PricingConfigController::class);
 });

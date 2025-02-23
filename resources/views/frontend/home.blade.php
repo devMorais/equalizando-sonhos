@@ -43,16 +43,20 @@
     <!-- /Portfolio Section -->
 
     <!-- Testimonials Section -->
-    @include('frontend.sections.testimonials')
+    @if (!$testimonialsConfig->is_disabled)
+        @include('frontend.sections.testimonials')
+    @endif
     <!-- /Testimonials Section -->
 
     <!-- Pricing Section -->
-    @include('frontend.sections.pricing')
+    @if (!$PricingConfig->is_disabled)
+        @include('frontend.sections.pricing')
+    @endif
     <!-- /Pricing Section -->
 
-    <!-- Faq Section -->
+    {{-- <!-- Faq Section -->
     @include('frontend.sections.faq')
-    <!-- /Faq Section -->
+    <!-- /Faq Section --> --}}
 
     <!-- Team Section -->
     {{-- @include('frontend.sections.team') --}}

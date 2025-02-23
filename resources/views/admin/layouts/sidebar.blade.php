@@ -108,6 +108,27 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-comments"></i>
+                    <span>Depoimentos</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.testimonials-config.index') }}">Configuração</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.testimonials.index') }}">Itens</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-tags"></i>
+                    <span>Preços/Planos</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.pricing-config.index') }}">Configuração</a>
+                    </li>
+                    {{-- <li><a class="nav-link" href="{{ route('admin.testimonials.index') }}">Itens</a>
+                    </li> --}}
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>

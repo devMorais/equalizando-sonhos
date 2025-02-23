@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
+use App\Models\PricingConfig;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class PricingConfigController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $serviceConfig = Service::first();
-        return view('admin.sections.service.config.index', compact('serviceConfig'));
+        $pricingConfig = PricingConfig::first();
+        return view('admin.sections.pricing.config.index', compact('pricingConfig'));
     }
 
     /**
@@ -59,14 +59,15 @@ class ServiceController extends Controller
             'description' => ['required', 'max:500'],
         ]);
 
-        Service::updateOrCreate(
+        PricingConfig::updateOrCreate(
             ['id' => $id],
             [
                 'is_disabled' => $request->has('is_disabled'),
                 'title' => $request->title,
-                'description' => $request->description,
+                'description' => $request->description
             ]
         );
+
         flash()->success('Configuração da seção atualizada com sucesso.');
         return redirect()->back();
     }

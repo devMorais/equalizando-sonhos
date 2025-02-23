@@ -10,11 +10,14 @@ use App\Models\Hero;
 use App\Models\PortfolioCategory;
 use App\Models\PortfolioConfig;
 use App\Models\PortfolioItem;
+use App\Models\PricingConfig;
 use App\Models\Service;
 use App\Models\ServiceItem;
 use App\Models\Stat;
 use App\Models\TabCategory;
 use App\Models\TabItem;
+use App\Models\Testimonials;
+use App\Models\TestimonialsConfig;
 
 class HomeController extends Controller
 {
@@ -38,6 +41,9 @@ class HomeController extends Controller
         $portfolioCategories = PortfolioCategory::orderBy('id')->latest()->take(5)->get();
         $portfolioItems = PortfolioItem::with('category')->orderBy('id')->get();
         $portfolioConfig = PortfolioConfig::first();
+        $testimonialsConfig = TestimonialsConfig::first();
+        $testimonials = Testimonials::orderBy('id')->get();
+        $PricingConfig = PricingConfig::first();
         return view('frontend.home', compact(
             'hero',
             'clients',
@@ -50,7 +56,10 @@ class HomeController extends Controller
             'serviceItens',
             'portfolioCategories',
             'portfolioItems',
-            'portfolioConfig'
+            'portfolioConfig',
+            'testimonialsConfig',
+            'testimonials',
+            'PricingConfig'
         ));
     }
 }
